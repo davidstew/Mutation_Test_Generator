@@ -1,0 +1,104 @@
+Universal_Options:
+  dockerhub: aarjunrao
+  java_Xmx: 20G
+  output_folder: /path/to/results
+  reference_build: hg38
+  storage_location: Local
+alignment:
+  bwa:
+    index: S3://protect-data/hg38_references/bwa_index.tar.gz
+  cutadapt:
+    A: AGATCGGAAGAG
+    a: AGATCGGAAGAG
+  post:
+    picard:
+    samtools:
+  star:
+    index: S3://protect-data/hg38_references/star_with_fusion_100bp_readlen_indexes.tar.gz
+    type: star
+expression_estimation:
+  rsem:
+    index: S3://protect-data/hg38_references/rsem_index.tar.gz
+haplotyping:
+  phlat:
+    index: S3://protect-data/hg38_references/phlat_index.tar.gz
+mhc_peptide_binding:
+  mhci:
+    method_file: S3://protect-data/hg38_references/mhci_restrictions.json.tar.gz
+    pred: IEDB_recommended
+  mhcii:
+    method_file: S3://protect-data/hg38_references/mhcii_restrictions.json.tar.gz
+    pred: IEDB_recommended
+  netmhciipan:
+mutation_annotation:
+  snpeff:
+    index: S3://protect-data/hg38_references/snpeff_index.tar.gz
+    java_Xmx: 20G
+mutation_calling:
+  fusion_inspector:
+  indexes:
+    chromosomes: canonical_chr, chrM
+    cosmic_idx: S3://protect-data/hg38_references/CosmicCodingMuts.vcf.idx.tar.gz
+    cosmic_vcf: S3://protect-data/hg38_references/CosmicCodingMuts.vcf.tar.gz
+    dbsnp_idx: S3://protect-data/hg38_references/dbsnp_coding.vcf.idx.tar.gz
+    dbsnp_tbi: S3://protect-data/hg38_references/dbsnp_coding.vcf.gz.tbi
+    dbsnp_vcf: S3://protect-data/hg38_references/dbsnp_coding.vcf.gz
+    genome_dict: S3://protect-data/hg38_references/hg38.dict.tar.gz
+    genome_fai: S3://protect-data/hg38_references/hg38.fa.fai.tar.gz
+    genome_fasta: S3://protect-data/hg38_references/hg38.fa.tar.gz
+  muse:
+    run: False
+  mutect:
+    java_Xmx: 2G
+    run: False
+  radia:
+    cosmic_beds: S3://protect-data/hg38_references/radia_cosmic.tar.gz
+    dbsnp_beds: S3://protect-data/hg38_references/radia_dbsnp.tar.gz
+    gencode_beds: S3://protect-data/hg38_references/radia_gencode.tar.gz
+    pseudogene_beds: S3://protect-data/hg38_references/radia_pseudogenes.tar.gz
+    retrogene_beds: S3://protect-data/hg38_references/radia_retrogenes.tar.gz
+    run: True
+  somaticsniper:
+    bam_readcount:
+    run: False
+    samtools:
+  star_fusion:
+  strelka:
+    config_file: S3://protect-data/hg38_references/strelka_bwa_WXS_config.ini.tar.gz
+    run: True
+mutation_translation:
+  transgene:
+    gencode_annotation_gtf: S3://protect-data/hg38_references/gencode.v25.annotation_NOPARY.gtf.tar.gz
+    gencode_peptide_fasta: S3://protect-data/hg38_references/gencode.v25.pc_translations_NOPARY.fa.tar.gz
+    gencode_transcript_fasta: S3://protect-data/hg38_references/gencode.v25.pc_transcripts.fa.tar.gz
+    genome_fasta: S3://protect-data/hg38_references/hg38.fa.tar.gz
+patients:
+  PRTCT-01:
+    normal_dna_fastq_1: /path/to/<normal_dna_prefix>1.fastq.gz
+    tumor_dna_fastq_1: /path/to/<tumor_dna_prefix>1.fastq.gz
+    tumor_rna_fastq_1: /path/to/<tumor_rna_prefix>1.fastq.gz
+    tumor_type: SKCM
+  PRTCT-02:
+    normal_dna_fastq_1: S3://bucket/path/to/<tumor_dna_prefix>1.fastq.gz
+    tumor_dna_fastq_1: S3://bucket/path/to/<tumor_dna_prefix>1.fastq.gz
+    tumor_rna_fastq_1: https://S3-<region>.awsamazon.com/bucket/path/to/<tumor_dna_prefix>1.fastq.gz
+prediction_ranking:
+  rankboost:
+    mhci_args:
+      TPM: 0.0
+      nMHC: 0.32
+      npa: 0.0
+      nph: 0.0
+      overlap: 0.68
+      tndelta: 0.0
+    mhcii_args:
+      TPM: 0.2
+      nMHC: 0.2
+      npa: 0.2
+      nph: 0.2
+      tndelta: 0.2
+reports:
+  car_t_targets_file: S3://protect-data/hg38_references/car_t_targets.tsv.tar.gz
+  immune_resistance_pathways_file: S3://protect-data/hg38_references/immune_resistance_pathways.json.tar.gz
+  itx_resistance_file: S3://protect-data/hg38_references/itx_resistance.tsv.tar.gz
+  mhc_pathways_file: S3://protect-data/hg38_references/mhc_pathways.tsv.tar.gz
